@@ -1,0 +1,26 @@
+public class ComplexNumbers {
+    int real;
+    int imaginary; 
+    public ComplexNumbers(int real, int imaginary) 
+    { 
+        this.real = real; 
+        this.imaginary = imaginary;
+    }
+  
+    public ComplexNumbers plus(ComplexNumbers o){
+       this.real = this.real + o.real; 
+       this.imaginary= this.imaginary + o.imaginary; 
+        return this;
+   }
+    public ComplexNumbers multiply(ComplexNumbers o){
+          int temp = this.real * o.real - this.imaginary * o.imaginary;
+          this.imaginary = this.real * o.imaginary +  o.real * this.imaginary;
+          this.real = temp;
+        return this;
+    }
+
+    public void print(){
+        System.out.printf(this.real+" + "+"i" + this.imaginary);
+    }
+	
+}
