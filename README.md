@@ -1,1 +1,1 @@
-# data-structure in java(coding ninjas)
+Coding- Ninja - Data structure- In- Java
