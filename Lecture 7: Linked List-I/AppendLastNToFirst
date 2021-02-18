@@ -1,0 +1,63 @@
+// AppendLastNToFirst
+// Send Feedback
+// Given a linked list and an integer n, append the last n elements of the LL to front.
+// Indexing starts from 0. You don't need to print the elements, just update the elements and return the head of updated LL.
+// Assume given n will be smaller than length of LL.
+// Input format :
+
+// Line 1 : Linked list elements (separated by space and terminated by -1)`
+
+// Sample Input 1 :
+// 1 2 3 4 5 -1
+// 3
+// Sample Output 1 :
+// 3 4 5 1 2
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+    public static int flength(LinkedListNode<Integer> head){
+       
+        int count=0;
+        while(head!=null){
+            count++;
+            head=head.next;
+        }
+        return count;
+    }
+	public static LinkedListNode<Integer> appendLastNToFirst(LinkedListNode<Integer> head, int n) {
+         if(head==null || n==0){
+            return head;
+        }
+        LinkedListNode<Integer>temp1=head;
+        LinkedListNode<Integer> temp2=head;
+        int length=flength(head);
+        int i=0;
+        while(i<length-n-1){
+            temp1=temp1.next;
+            i++;
+        }
+        head=temp1.next;
+        temp1.next=null;
+        LinkedListNode<Integer>temp3= head;
+        while(temp3.next!=null){
+            temp3=temp3.next;
+        }
+        temp3.next=temp2;
+        return head;
+	}
+
+}
