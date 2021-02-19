@@ -1,0 +1,34 @@
+For a given queue containing all integer data, reverse the first K elements.
+You have been required to make the desired change in the input queue itself.
+
+Sample Input 1:
+5 3
+1 2 3 4 5
+Sample Output 1:
+3 2 1 4 5
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.*;
+
+public class Solution {
+
+	public static Queue<Integer> reverseKElements(Queue<Integer> input, int k) {
+     
+        Stack<Integer> stack = new Stack<Integer>();
+        for(int i=0;i<k;i++){
+            stack.push(input.peek());
+            input.remove();
+        }
+        while(!stack.empty()){
+            input.add(stack.peek());
+            stack.pop();
+        }
+        for(int i=0;i<input.size()-k;i++){
+            input.add(input.peek());
+            input.remove();
+        }
+        return input;
+    }
+
+}
