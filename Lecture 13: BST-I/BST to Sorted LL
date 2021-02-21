@@ -11,26 +11,33 @@
 // Sample Output :
 // 2 5 6 7 8 10
 
-public class Solution {
+  public class Solution {
 
-	/*
-	 * Binary Tree Node class
-	 * 
-	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T>
-	 * right;
-	 * 
-	 * public BinaryTreeNode(T data) { this.data = data; } }
-	 */
+/*	Binary Tree Node class 
+ * 
+ * 	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
 
-	/*
-	 * LinkedList Node Class
-	 *
-	 * 
-	 * class LinkedListNode<T> { T data; LinkedListNode<T> next;
-	 * 
-	 * public LinkedListNode(T data) { this.data = data; } }
-	 */
-
+/* LinkedList Node Class
+*
+*	
+class LinkedListNode<T> {
+	T data;
+	LinkedListNode<T> next;
+	
+	public LinkedListNode(T data) {
+		this.data = data;
+	}
+}
+*/
 	public static LinkedListNode<Integer> constructLinkedList(BinaryTreeNode<Integer> root) {
          if(root==null)
          {
