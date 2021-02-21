@@ -1,0 +1,78 @@
+// Construct Tree from Postorder and Inorder
+// Send Feedback
+// Given Postorder and Inorder traversal of a binary tree, create the binary tree associated with the traversals.You just need to construct the tree and return the root.
+// Note: Assume binary tree contains only unique elements.
+// Input format :
+
+// Line 1 : n (Total number of nodes in binary tree)
+
+// Line 2 : Post order traversal
+
+// Line 3 : Inorder Traversal
+
+// Output Format :
+
+// Elements are printed level wise, each level in new line (separated by space).
+
+// Sample Input :
+// 8
+// 8 4 5 2 6 7 3 1
+// 4 8 2 5 1 6 3 7
+// Sample Output :
+// 1 
+// 2 3 
+// 4 5 6 7 
+// 8
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+import java.util.*;
+public class Solution {
+
+	public static BinaryTreeNode<Integer> buildTree(int[] postOrder, int[] inOrder) {
+      if(inOrder.length==0 || postOrder.length==0){
+          return null;
+      }
+        int ip=inOrder.length-1;
+        int pp=postOrder.length-1;
+        Stack<BinaryTreeNode<Integer>> stk = new Stack<BinaryTreeNode<Integer>>();
+        BinaryTreeNode<Integer> prev=null;
+        BinaryTreeNode<Integer> root= new BinaryTreeNode<Integer>(postOrder[pp]);
+        stk.push(root);
+        pp--;
+        while(pp>=0){
+            while(!stk.isEmpty() && stk.peek().data== inOrder[ip]){
+                prev= stk.pop();
+                ip--;
+            }
+            BinaryTreeNode<Integer> newnode= new BinaryTreeNode<Integer>(postOrder[pp]);
+            if(prev!=null){
+                prev.left=newnode;
+            }
+            else if(!stk.isEmpty()){
+                BinaryTreeNode<Integer> currtop = stk.peek();
+                currtop.right=newnode;
+            }
+            stk.push(newnode);
+            prev=null;
+            pp--;
+        }
+        return root;
+	}
+
+}
