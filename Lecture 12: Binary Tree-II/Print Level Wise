@@ -1,0 +1,75 @@
+// Code : Print Level Wise
+// Send Feedback
+// Given a generic tree, print the input tree in level wise order. That is, print the elements at same level in one line (separated by space). Print different levels in differnet lines.
+// Input format :
+// Elements in level order form separated by space (as per done in class). Order is - 
+// Root_data, n (No_Of_Child_Of_Root), n children, and so on for every element 
+// Output Format :
+// Level wise print
+// Sample Input :
+// 10 3 20 30 40 2 40 50 0 0 0 0 
+// Sample Output :
+// 10
+// 20 30 40 
+// 40 50
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+import java.util.*;
+public class Solution {
+
+	public static void printLevelWise(BinaryTreeNode<Integer> root) {
+		 if(root==null)
+            return;
+        Queue<BinaryTreeNode<Integer>> pending = new LinkedList<>();
+        pending.add(root);
+        while(!pending.isEmpty()){
+            BinaryTreeNode<Integer> frontnode = pending.poll();
+            if(frontnode==null)
+            {
+                System.out.println();
+                if(!pending.isEmpty())
+                {
+                    pending.add(null);
+                }
+            }
+            else
+            {
+              System.out.print(frontnode.data+":L:");
+                if(frontnode.left!=null)
+                {
+                    pending.add(frontnode.left);
+                    System.out.print(frontnode.left.data+",R:");
+                }
+                else
+                {
+                   System.out.print("-1"+",R:");   
+                }
+                 if(frontnode.right!=null)
+                {
+                    pending.add(frontnode.right);
+                    System.out.println(frontnode.right.data);
+                }
+                else
+                {
+                   System.out.println("-1");   
+                }
+            }
+        }
+    }
+}
