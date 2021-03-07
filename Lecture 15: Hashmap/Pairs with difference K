@@ -1,0 +1,76 @@
+// Pairs with difference K
+// Send Feedback
+// You are given with an array of integers and an integer K. Write a program to find and print all pairs which have difference K.
+// Take difference as absolute.
+// Input Format :
+// Line 1 : Integer n, Size of array
+// Line 2 : Array elements (separated by space)
+// Line 3 : K
+// Output format :
+// Print pairs in different lines (pair elements separated by space). In a pair, smaller element should be printed first.
+// (Order of different pairs is not important)
+// Constraints :
+// 0 <= n <= 10^4
+// Sample Input 1 :
+// 4 
+// 5 1 2 4
+// 3
+// Sample Output 1 :
+// 2 5
+// 1 4
+// Sample Input 2 :
+// 4
+// 4 4 4 4 
+// 0
+// Sample Output 2 :
+// 4 4
+// 4 4
+// 4 4
+// 4 4
+// 4 4
+// 4 4
+
+import java.util.*;
+class Solution {
+
+	public static int getPairsWithDifferenceK(int arr[], int k) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+        int pair=0;
+		for(int i=0;i<arr.length;i++) {
+
+			if(map.containsKey(arr[i] - k) && k!=0 ) {
+
+				for(int count = 0 ; count < map.get(arr[i] - k);count++ ) {
+					if(arr[i] - k < arr[i]) {
+						pair++;
+					}
+					else {
+                        pair++;
+					}
+				}
+
+			}
+			if(map.containsKey(arr[i] + k)) {
+
+				for(int count = 0 ; count < map.get(arr[i] + k);count++ ) {
+					if(arr[i] + k < arr[i]) {
+						pair++;
+					}
+					else {
+						pair++;
+					}
+				}
+
+			}
+			if(map.containsKey(arr[i])) {
+				map.put(arr[i], map.get(arr[i]) + 1 );
+			}
+			else {
+				map.put(arr[i],1);
+			}
+
+		}
+        return pair;
+
+	}
+}
